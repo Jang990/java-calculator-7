@@ -21,4 +21,9 @@ class DelimiterReaderTest {
         assertEquals(Pattern.quote("A"), delimiter);
     }
 
+    @Test
+    void 여러개의_커스텀_구분자() {
+        assertThrows(IllegalArgumentException.class, () -> reader.read("//A\n//B\n1,2:3"));
+    }
+
 }
