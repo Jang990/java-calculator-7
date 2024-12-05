@@ -12,7 +12,7 @@ class DelimiterReaderTest {
 
     @Test
     void 기본_구분자_읽기() {
-        String delimiter = reader.read("1,2:3");
+        assertEquals(Pattern.quote(",:"), reader.read("1,2:3"));
     }
 
     @Test
