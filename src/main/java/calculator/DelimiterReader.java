@@ -10,12 +10,21 @@ public class DelimiterReader {
     private final int SINGLE = 1;
 
     public String read(String line) {
-        if(countDelimiterFormat(line) > SINGLE)
+        if(notFoundDelimiterFormat(line))
+            return Pattern.quote(DEFAULT_DELIMITER);
+        if(countDelimiterFormat(line) != SINGLE)
             throw new IllegalArgumentException();
+        return parseDelimiter(line);
+    }
+
+    private static String parseDelimiter(String line) {
         Matcher matcher = DELIMITER_PATTERN.matcher(line);
-        if(matcher.find())
-            return Pattern.quote(matcher.group(1));
-        return Pattern.quote(DEFAULT_DELIMITER);
+        matcher.find();
+        return Pattern.quote(matcher.group(1));
+    }
+
+    private boolean notFoundDelimiterFormat(String line) {
+        return countDelimiterFormat(line) == 0;
     }
 
     private int countDelimiterFormat(String line) {
