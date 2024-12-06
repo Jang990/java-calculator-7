@@ -6,21 +6,20 @@ import java.util.regex.Pattern;
 public class DelimiterReader {
     private static final String regex = "//(.*?)\n";
     private static final Pattern DELIMITER_PATTERN = Pattern.compile(regex);
-    private final String DEFAULT_DELIMITER = ",:";
     private final int SINGLE = 1;
 
-    public String read(String line) {
+    public Delimiter read(String line) {
         if(notFoundDelimiterFormat(line))
-            return Pattern.quote(DEFAULT_DELIMITER);
+            return new Delimiter();
         if(countDelimiterFormat(line) != SINGLE)
             throw new IllegalArgumentException();
         return parseDelimiter(line);
     }
 
-    private static String parseDelimiter(String line) {
+    private static Delimiter parseDelimiter(String line) {
         Matcher matcher = DELIMITER_PATTERN.matcher(line);
         matcher.find();
-        return Pattern.quote(matcher.group(1));
+        return new Delimiter(matcher.group(1));
     }
 
     private boolean notFoundDelimiterFormat(String line) {

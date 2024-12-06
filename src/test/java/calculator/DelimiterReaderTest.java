@@ -12,12 +12,12 @@ class DelimiterReaderTest {
 
     @Test
     void 기본_구분자_읽기() {
-        assertEquals(Pattern.quote(",:"), reader.read("1,2:3"));
+        assertEquals(new Delimiter(), reader.read("1,2:3"));
     }
 
     @Test
     void 커스텀_구분자_읽기() {
-        assertEquals(Pattern.quote("A"), reader.read("//A\n1,2:3"));
+        assertEquals(new Delimiter("A"), reader.read("//A\n1,2:3"));
     }
 
     @Test
