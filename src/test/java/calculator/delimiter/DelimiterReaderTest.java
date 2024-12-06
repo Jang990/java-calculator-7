@@ -1,8 +1,8 @@
-package calculator;
+package calculator.delimiter;
 
+import calculator.delimiter.Delimiter;
+import calculator.delimiter.DelimiterReader;
 import org.junit.jupiter.api.Test;
-
-import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 

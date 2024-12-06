@@ -1,5 +1,6 @@
-package calculator;
+package calculator.delimiter;
 
+import calculator.delimiter.Delimiter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
