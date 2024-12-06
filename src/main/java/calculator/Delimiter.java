@@ -6,8 +6,14 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Delimiter {
+    public static final String DEFAULT_REGEX = ",|:";
+
     private static final String template = "//%s\n";
     private String value;
+
+    protected Delimiter() {
+        this.value = DEFAULT_REGEX;
+    }
 
     protected Delimiter(String value) {
         this.value = value;
@@ -28,7 +34,7 @@ public class Delimiter {
     }
 
     public List<String> split(String line) {
-        if(value.equals(",|:"))
+        if(value.equals(DEFAULT_REGEX))
             return Arrays.stream(line.split(value)).toList();
 
         String args = line.replace(template.formatted(value), "");

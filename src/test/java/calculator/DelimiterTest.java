@@ -22,7 +22,7 @@ class DelimiterTest {
 
     @Test
     void 기본구분자_분리기능_추가() {
-        Delimiter delimiter = new Delimiter(",|:");
+        Delimiter delimiter = new Delimiter();
         assertEquals(List.of("1", "2", "3"), delimiter.split("1:2,3"));
     }
 
