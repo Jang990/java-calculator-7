@@ -1,8 +1,12 @@
 package calculator;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Delimiter {
+    private static final String template = "//%s\n";
     private String value;
 
     protected Delimiter(String value) {
@@ -21,5 +25,11 @@ public class Delimiter {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    public List<String> split(String line) {
+        String args = line.replace(template.formatted(value), "");
+        return Arrays.stream(args.split(Pattern.quote(value)))
+                .toList();
     }
 }
