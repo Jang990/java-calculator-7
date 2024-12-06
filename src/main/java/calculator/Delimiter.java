@@ -28,6 +28,9 @@ public class Delimiter {
     }
 
     public List<String> split(String line) {
+        if(value.equals(",|:"))
+            return Arrays.stream(line.split(value)).toList();
+
         String args = line.replace(template.formatted(value), "");
         return Arrays.stream(args.split(Pattern.quote(value)))
                 .toList();
