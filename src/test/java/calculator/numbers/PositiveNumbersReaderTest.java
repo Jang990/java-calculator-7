@@ -7,16 +7,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NumbersReaderTest {
+class PositiveNumbersReaderTest {
 
-    private NumbersReader numbersReader = new NumbersReader();
+    private PositiveNumbersReader positiveNumbersReader = new PositiveNumbersReader();
 
     @Test
     void 구분자를_통해_숫자_읽기() {
         DelimiterStub delimiter = new DelimiterStub();
         delimiter.setTestValue(List.of("1", "2", "3"));
 
-        assertEquals(List.of(1, 2, 3), numbersReader.read(delimiter, ""));
+        assertEquals(List.of(1, 2, 3), positiveNumbersReader.read(delimiter, ""));
     }
 
     @Test
@@ -24,7 +24,7 @@ class NumbersReaderTest {
         DelimiterStub delimiter = new DelimiterStub();
         delimiter.setTestValue(List.of("1", "A", "3"));
 
-        assertThrows(IllegalArgumentException.class, () -> numbersReader.read(delimiter, ""));
+        assertThrows(IllegalArgumentException.class, () -> positiveNumbersReader.read(delimiter, ""));
     }
 
     @Test
@@ -32,7 +32,7 @@ class NumbersReaderTest {
         DelimiterStub delimiter = new DelimiterStub();
         delimiter.setTestValue(List.of("1", "-2", "3"));
 
-        assertThrows(IllegalArgumentException.class, () -> numbersReader.read(delimiter, ""));
+        assertThrows(IllegalArgumentException.class, () -> positiveNumbersReader.read(delimiter, ""));
     }
 
 }

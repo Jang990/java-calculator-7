@@ -5,7 +5,7 @@ import calculator.delimiter.Delimiter;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NumbersReader {
+public class PositiveNumbersReader {
     public List<Integer> read(Delimiter delimiter, String line) {
         List<String> numbers = delimiter.split(line);
         try {

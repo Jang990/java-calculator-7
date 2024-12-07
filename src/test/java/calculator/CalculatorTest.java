@@ -1,13 +1,13 @@
 package calculator;
 
 import calculator.delimiter.DelimiterReader;
-import calculator.numbers.NumbersReader;
+import calculator.numbers.PositiveNumbersReader;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
-    Calculator calculator = new Calculator(new DelimiterReader(), new NumbersReader());
+    Calculator calculator = new Calculator(new DelimiterReader(), new PositiveNumbersReader());
 
     @Test
     void 기본_구분자를_통해_더하기() {
