@@ -18,7 +18,7 @@ class DelimiterTest {
     @Test
     void 구분자를_통한_분리기능_추가() {
         Delimiter delimiter = new Delimiter(";");
-        assertEquals(List.of("1", "2", "3"), delimiter.split("//;\n1;2;3"));
+        assertEquals(List.of("1", "2", "3"), delimiter.split("//;\\n1;2;3"));
     }
 
     @Test

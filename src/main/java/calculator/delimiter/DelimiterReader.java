@@ -1,11 +1,12 @@
 package calculator.delimiter;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DelimiterReader {
-    private static final String regex = "//(.*?)\n";
+    private static final String regex = "//(.*?)\\n";
     private static final Pattern DELIMITER_PATTERN = Pattern.compile(regex);
+    private static final String DELIMITER_FORMAT_PREFIX = "//";
+    private static final String ARGUMENT_DELIMITER = "\\n";
     private final int SINGLE = 1;
 
     public Delimiter read(String line) {
@@ -17,9 +18,11 @@ public class DelimiterReader {
     }
 
     private static Delimiter parseDelimiter(String line) {
-        Matcher matcher = DELIMITER_PATTERN.matcher(line);
-        matcher.find();
-        return new Delimiter(matcher.group(1));
+        return new Delimiter(parseDelimiterValue(line));
+    }
+
+    private static String parseDelimiterValue(String line) {
+        return getArguments(line)[0].replace(DELIMITER_FORMAT_PREFIX, "");
     }
 
     private boolean notFoundDelimiterFormat(String line) {
@@ -27,10 +30,15 @@ public class DelimiterReader {
     }
 
     private int countDelimiterFormat(String line) {
-        Matcher matcher = DELIMITER_PATTERN.matcher(line);
         int result = 0;
-        while(matcher.find())
-            result++;
+        for (String argument : getArguments(line)) {
+            if(argument.startsWith(DELIMITER_FORMAT_PREFIX))
+                result++;
+        }
         return result;
+    }
+
+    private static String[] getArguments(String line) {
+        return line.split(Pattern.quote(ARGUMENT_DELIMITER));
     }
 }

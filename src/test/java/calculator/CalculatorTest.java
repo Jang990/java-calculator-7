@@ -17,6 +17,6 @@ class CalculatorTest {
 
     @Test
     void 커스텀_구분자를_통해_더하기() {
-        assertEquals(6, calculator.sum("//A\n1A2A3"));
+        assertEquals(6, calculator.sum("//A\\n1A2A3"));
     }
 }

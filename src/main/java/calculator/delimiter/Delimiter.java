@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class Delimiter {
     public static final String DEFAULT_REGEX = ",|:";
 
-    private static final String template = "//%s\n";
+    private static final String template = "//%s\\n";
     private String value;
 
     protected Delimiter() {
