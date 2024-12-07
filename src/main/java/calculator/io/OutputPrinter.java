@@ -1,7 +1,7 @@
 package calculator.io;
 
 public class OutputPrinter {
-    public void print(String line) {
+    public void print(Object line) {
         System.out.println(line);
     }
 }
